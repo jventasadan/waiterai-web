@@ -46,12 +46,11 @@
 
     /* HERO */
     .hero{
-      display:grid;grid-template-columns:1fr 1fr;
-      align-items:center;gap:4rem;
-      padding:5rem 5rem 5rem;
-      max-width:1280px;margin:0 auto;
+      display:flex;flex-direction:column;align-items:center;text-align:center;
+      padding:5rem 5rem 4rem;
+      max-width:800px;margin:0 auto;
     }
-    .hero-left{display:flex;flex-direction:column;gap:1.6rem;align-items:flex-start}
+    .hero-left{display:flex;flex-direction:column;gap:1.6rem;align-items:center}
     .eyebrow{
       display:inline-block;
       font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
@@ -211,9 +210,8 @@
       border-radius:20px;overflow:hidden;
       box-shadow:0 24px 64px rgba(44,26,14,0.2);
       border:1px solid var(--border);
-      max-height:580px;overflow-y:hidden;
     }
-    .what-visual img{width:100%;display:block;object-fit:cover;object-position:top}
+    .what-visual img{width:100%;display:block;height:auto}
 
     /* FUNCIONALIDADES */
     .features{
@@ -359,13 +357,6 @@
       <span class="badge">🔄 Comandas en tiempo real</span>
     </div>
     <a href="#contacto" class="btn-main">Solicitar demo gratuita</a>
-  </div>
-  <div class="hero-right">
-    <div class="phone-badge pb-left"><div class="pb-dot"></div>Mesa 3 · Comanda enviada</div>
-    <div class="phone-wrap">
-      <img src="./hero.jpg" alt="Carta digital WaiterAI"/>
-    </div>
-    <div class="phone-badge pb-right"><div class="pb-dot"></div>Panel cocina · En directo</div>
   </div>
 </section>
 
