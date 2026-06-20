@@ -4,246 +4,282 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>WaiterAI — Carta digital para restaurantes</title>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet"/>
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     :root{
-      --cream:#FAF7F2;
-      --cream2:#F2EDE4;
-      --brown:#2C1A0E;
-      --brown2:#3D2510;
+      --dark:#0A0A0F;
+      --dark2:#12121A;
+      --dark3:#1A1A26;
+      --blue:#2D6FFF;
+      --blue2:#4B8AFF;
+      --blue-glow:rgba(45,111,255,0.25);
       --amber:#C97B2A;
       --amber2:#E8952F;
-      --amber-light:#F5B45A;
-      --text:#1E1209;
-      --muted:#6B5744;
-      --border:rgba(44,26,14,0.12);
+      --cream:#F0EDE8;
+      --cream2:#D4CECC;
       --white:#FFFFFF;
+      --muted:#8A8A9A;
+      --border:rgba(255,255,255,0.08);
+      --border2:rgba(45,111,255,0.3);
     }
-    html{scroll-behavior:smooth;background:var(--cream)}
-    body{font-family:"DM Sans",sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden}
+    html{scroll-behavior:smooth;background:var(--dark)}
+    body{font-family:"Inter",sans-serif;background:var(--dark);color:var(--cream);overflow-x:hidden}
 
     /* NAV */
     nav{
       position:fixed;top:0;left:0;right:0;z-index:200;
       display:grid;grid-template-columns:1fr auto 1fr;
       align-items:center;
-      padding:0 2.5rem;height:100px;
-      background:rgba(250,247,242,0.97);
+      padding:0 2.5rem;height:90px;
+      background:rgba(10,10,15,0.95);
       backdrop-filter:blur(20px);
+      border-bottom:1px solid var(--border);
     }
-    nav img{height:140px;width:auto;display:block;margin:0 auto}
-    nav .logo-right{justify-self:end}
-    nav .logo-right img{height:140px;margin:0}
+    nav img{height:120px;width:auto;display:block;margin:0 auto}
     .btn-nav{
-      background:var(--brown);color:var(--cream);
-      padding:.55rem 1.2rem;font-size:.82rem;font-weight:600;
+      justify-self:end;
+      background:var(--blue);color:var(--white);
+      padding:.55rem 1.3rem;font-size:.82rem;font-weight:700;
       letter-spacing:.03em;text-decoration:none;
-      border-radius:7px;transition:background .2s;white-space:nowrap;
+      border-radius:7px;transition:all .2s;white-space:nowrap;
+      box-shadow:0 0 20px var(--blue-glow);
     }
-    .btn-nav:hover{background:var(--brown2)}
+    .btn-nav:hover{background:var(--blue2);box-shadow:0 0 30px var(--blue-glow)}
 
     /* HERO */
     .hero{
       padding:10rem 2rem 5rem;
-      max-width:700px;margin:0 auto;
+      max-width:720px;margin:0 auto;
       display:flex;flex-direction:column;align-items:center;
-      text-align:center;gap:1.8rem;
+      text-align:center;gap:2rem;
     }
     .eyebrow{
-      display:inline-block;
-      font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
-      color:var(--amber);padding:.3rem .9rem;
-      background:rgba(201,123,42,0.1);border:1px solid rgba(201,123,42,0.25);
+      display:inline-flex;align-items:center;gap:.5rem;
+      font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+      color:var(--blue2);padding:.35rem 1rem;
+      background:rgba(45,111,255,0.1);border:1px solid var(--border2);
       border-radius:100px;
     }
     .hero h1{
-      font-family:"DM Serif Display",serif;
-      font-size:clamp(2.8rem,6vw,4.4rem);
-      line-height:1.08;color:var(--brown);
+      font-family:"Inter",sans-serif;font-weight:900;
+      font-size:clamp(2.6rem,7vw,4.6rem);
+      line-height:1.05;color:var(--white);
+      letter-spacing:-.02em;
     }
-    .hero h1 em{color:var(--amber);font-style:italic}
+    .hero h1 em{
+      font-style:italic;font-weight:700;
+      background:linear-gradient(135deg,var(--amber2),var(--amber));
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    }
     .hero-sub{font-size:1.05rem;line-height:1.75;color:var(--muted);max-width:500px}
     .hero-badges{display:flex;gap:.6rem;flex-wrap:wrap;justify-content:center}
     .badge{
-      font-size:.72rem;font-weight:500;color:var(--muted);
-      padding:.35rem .85rem;border:1px solid var(--border);
-      border-radius:100px;background:var(--white);white-space:nowrap;
+      font-size:.72rem;font-weight:600;color:var(--cream2);
+      padding:.4rem .9rem;border:1px solid var(--border);
+      border-radius:100px;background:var(--dark3);white-space:nowrap;
     }
-    .btn-main{
-      display:inline-block;
-      background:var(--brown);color:var(--cream);
-      padding:.9rem 2.2rem;font-size:.95rem;font-weight:600;
-      border-radius:8px;text-decoration:none;
-      transition:background .2s,transform .15s;
-    }
-    .btn-main:hover{background:var(--brown2);transform:translateY(-1px)}
 
-    /* HERO VISUAL */
-    .hero-visual{
-      width:100%;max-width:480px;margin:0 auto;
-      border-radius:20px;overflow:hidden;
-      box-shadow:0 32px 80px rgba(44,26,14,0.2);
-      border:1px solid var(--border);
+    /* FRASES */
+    .frases{
+      width:100%;max-width:540px;margin:0 auto;
+      display:flex;flex-direction:column;gap:0;
+      border:1px solid var(--border);border-radius:16px;overflow:hidden;
     }
-    .hero-visual img{width:100%;display:block;height:auto}
+    .frase{
+      padding:1.1rem 1.5rem;
+      font-family:"Cormorant Garamond",serif;
+      font-size:clamp(1.35rem,4vw,1.75rem);
+      font-weight:700;color:var(--white);line-height:1.2;
+      background:var(--dark2);
+      border-bottom:1px solid var(--border);
+      display:flex;align-items:center;gap:.75rem;
+    }
+    .frase:last-child{border-bottom:none}
+    .frase em{color:var(--amber2);font-style:italic}
+
+    /* QR */
+    .qr-wrap{
+      text-align:center;padding:0 2rem 1rem;
+    }
+    .qr-label{
+      font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+      color:var(--blue2);margin-bottom:1rem;display:block;
+    }
+    .qr-wrap img{
+      width:200px;height:auto;border-radius:14px;
+      box-shadow:0 0 40px var(--blue-glow);
+      border:1px solid var(--border2);
+    }
 
     /* STRIP */
     .strip{
-      background:var(--brown);
+      background:linear-gradient(135deg,var(--dark2),var(--dark3));
       padding:2.5rem 2rem;text-align:center;
-    }
-    .strip p{
-      font-family:"DM Serif Display",serif;
-      font-size:clamp(1.2rem,2.5vw,1.8rem);
-      color:var(--cream);max-width:700px;margin:0 auto;
-    }
-    .strip p em{color:var(--amber-light);font-style:italic}
-
-    /* SECTION BASE */
-    .section-header{text-align:center;margin-bottom:3.5rem}
-    .section-header h2{
-      font-family:"DM Serif Display",serif;
-      font-size:clamp(1.9rem,3.5vw,2.8rem);color:var(--brown);margin-bottom:.7rem;
-    }
-    .section-header p{font-size:.95rem;color:var(--muted);max-width:500px;margin:0 auto}
-
-    /* CÓMO FUNCIONA */
-    .how{
-      background:var(--cream2);
-      padding:6rem 2rem;
       border-top:1px solid var(--border);
       border-bottom:1px solid var(--border);
     }
+    .strip p{
+      font-family:"Cormorant Garamond",serif;
+      font-size:clamp(1.2rem,2.5vw,1.8rem);font-weight:700;
+      color:var(--cream);max-width:700px;margin:0 auto;
+    }
+    .strip p em{color:var(--amber2);font-style:italic}
+
+    /* CÓMO FUNCIONA */
+    .how{background:var(--dark2);padding:6rem 2rem}
     .how-inner{max-width:1100px;margin:0 auto}
-    .how-cols{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;margin-top:3.5rem}
-    .how-col{display:flex;flex-direction:column;gap:0}
+    .section-header{text-align:center;margin-bottom:3.5rem}
+    .section-header h2{
+      font-family:"Inter",sans-serif;font-weight:900;
+      font-size:clamp(1.9rem,3.5vw,2.8rem);color:var(--white);
+      letter-spacing:-.02em;margin-bottom:.7rem;
+    }
+    .section-header p{font-size:.95rem;color:var(--muted);max-width:500px;margin:0 auto}
+    .how-cols{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:3.5rem}
+    .how-col{display:flex;flex-direction:column}
     .how-col-title{
       display:flex;align-items:center;gap:.9rem;
-      font-family:"DM Serif Display",serif;font-size:1.3rem;color:var(--brown);
-      padding-bottom:1rem;border-bottom:2px solid var(--amber);
-      margin-bottom:1.8rem;
+      font-family:"Inter",sans-serif;font-size:1rem;font-weight:800;
+      color:var(--white);letter-spacing:.01em;
+      padding-bottom:1rem;border-bottom:2px solid var(--blue);
+      margin-bottom:1.8rem;text-transform:uppercase;letter-spacing:.08em;
     }
     .how-col-icon{
-      width:40px;height:40px;border-radius:50%;flex-shrink:0;
-      background:var(--brown);color:var(--cream);
-      display:flex;align-items:center;justify-content:center;font-size:1rem;
+      width:38px;height:38px;border-radius:50%;flex-shrink:0;
+      background:var(--blue);color:var(--white);
+      display:flex;align-items:center;justify-content:center;font-size:.95rem;
+      box-shadow:0 0 16px var(--blue-glow);
     }
-    .step{display:flex;gap:1rem;margin-bottom:1.5rem}
+    .step{display:flex;gap:1rem;margin-bottom:1.4rem}
     .step-num{
-      width:28px;height:28px;border-radius:50%;flex-shrink:0;
-      background:var(--amber);color:var(--white);
+      width:26px;height:26px;border-radius:50%;flex-shrink:0;
+      background:rgba(45,111,255,0.15);color:var(--blue2);
+      border:1px solid var(--border2);
       display:flex;align-items:center;justify-content:center;
-      font-size:.78rem;font-weight:700;
+      font-size:.75rem;font-weight:800;
     }
-    .step-h{font-weight:600;font-size:.92rem;color:var(--brown);margin-bottom:.25rem}
-    .step-p{font-size:.83rem;color:var(--muted);line-height:1.6}
+    .step-h{font-weight:700;font-size:.9rem;color:var(--cream);margin-bottom:.25rem}
+    .step-p{font-size:.82rem;color:var(--muted);line-height:1.6}
     .how-img{
       margin-top:2rem;border-radius:14px;overflow:hidden;
-      box-shadow:0 12px 40px rgba(44,26,14,0.15);
+      box-shadow:0 8px 40px rgba(0,0,0,0.5);
+      border:1px solid var(--border);
     }
     .how-img img{width:100%;display:block;height:auto}
 
     /* FUNCIONALIDADES */
-    .features{
-      background:var(--brown);
-      padding:6rem 2rem;
-    }
+    .features{background:var(--dark3);padding:6rem 2rem;border-top:1px solid var(--border)}
     .features-inner{max-width:1100px;margin:0 auto}
-    .features .section-header h2{color:var(--cream)}
-    .features .section-header p{color:rgba(250,247,242,0.6)}
-    .feat-grid{
-      display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;
-    }
+    .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
     .feat-cell{
-      background:rgba(255,255,255,0.05);border-radius:14px;
-      padding:1.8rem;border:1px solid rgba(255,255,255,0.08);
-      transition:background .2s,transform .2s;
+      background:var(--dark2);border-radius:14px;
+      padding:1.8rem;border:1px solid var(--border);
+      transition:border-color .2s,transform .2s,box-shadow .2s;
     }
-    .feat-cell:hover{background:rgba(255,255,255,0.09);transform:translateY(-2px)}
+    .feat-cell:hover{
+      border-color:var(--border2);transform:translateY(-3px);
+      box-shadow:0 8px 32px var(--blue-glow);
+    }
     .fc-icon{font-size:1.6rem;margin-bottom:.9rem}
-    .fc-title{font-family:"DM Serif Display",serif;font-size:1rem;color:var(--cream);margin-bottom:.5rem}
-    .fc-text{font-size:.82rem;color:rgba(250,247,242,0.58);line-height:1.65}
+    .fc-title{font-weight:700;font-size:.95rem;color:var(--white);margin-bottom:.5rem}
+    .fc-text{font-size:.82rem;color:var(--muted);line-height:1.65}
 
     /* PRECIO */
-    .price{
-      padding:6rem 2rem;
-      max-width:600px;margin:0 auto;text-align:center;
-    }
+    .price{padding:6rem 2rem;max-width:580px;margin:0 auto;text-align:center}
+    .price .section-header h2{color:var(--white)}
     .price-card{
-      background:var(--white);border-radius:24px;
-      padding:3rem;margin-top:3rem;
-      border:1px solid var(--border);
-      box-shadow:0 16px 48px rgba(44,26,14,0.1);
+      background:var(--dark2);border-radius:20px;
+      padding:2.5rem;margin-top:2.5rem;
+      border:1px solid var(--border2);
+      box-shadow:0 0 60px var(--blue-glow);
     }
+    .launch-badge{
+      display:inline-block;
+      background:linear-gradient(135deg,var(--amber2),var(--amber));
+      color:var(--white);font-size:.7rem;font-weight:800;
+      letter-spacing:.1em;text-transform:uppercase;
+      padding:.35rem 1rem;border-radius:100px;margin-bottom:1.2rem;
+    }
+    .price-old{font-size:1.4rem;color:var(--muted);text-decoration:line-through;margin-right:.5rem}
     .price-amount{
-      font-family:"DM Serif Display",serif;
-      font-size:4rem;color:var(--brown);line-height:1;margin-bottom:.4rem;
+      font-family:"Inter",sans-serif;font-weight:900;
+      font-size:4.5rem;color:var(--white);line-height:1;margin-bottom:.3rem;letter-spacing:-.03em;
     }
-    .price-amount span{font-size:1.2rem;color:var(--muted)}
-    .price-desc{font-size:.88rem;color:var(--muted);margin-bottom:2rem;line-height:1.6}
+    .price-amount span{font-size:1.2rem;color:var(--muted);font-weight:500}
+    .price-desc{font-size:.87rem;color:var(--muted);margin-bottom:2rem;line-height:1.6}
     .price-includes{
       list-style:none;text-align:left;
       display:flex;flex-direction:column;gap:.65rem;margin-bottom:2rem;
     }
     .price-includes li{
-      font-size:.87rem;color:var(--text);
-      padding-left:1.3rem;position:relative;
+      font-size:.87rem;color:var(--cream2);
+      padding-left:1.4rem;position:relative;
     }
-    .price-includes li::before{content:"✓";position:absolute;left:0;color:var(--amber);font-weight:700}
+    .price-includes li::before{content:"✓";position:absolute;left:0;color:var(--blue2);font-weight:800}
     .price-note{font-size:.73rem;color:var(--muted);margin-top:1rem}
+    .btn-main{
+      display:block;width:100%;text-align:center;
+      background:var(--blue);color:var(--white);
+      padding:1rem 2rem;font-size:.95rem;font-weight:700;
+      border-radius:10px;text-decoration:none;
+      transition:all .2s;box-shadow:0 0 24px var(--blue-glow);
+      letter-spacing:.02em;
+    }
+    .btn-main:hover{background:var(--blue2);box-shadow:0 0 40px var(--blue-glow);transform:translateY(-1px)}
 
     /* CTA FINAL */
     .cta-final{
-      background:var(--cream2);
+      background:linear-gradient(135deg,var(--dark2),var(--dark3));
       padding:6rem 2rem;
       border-top:1px solid var(--border);text-align:center;
     }
     .cta-final h2{
-      font-family:"DM Serif Display",serif;
-      font-size:clamp(1.9rem,3.5vw,2.8rem);color:var(--brown);margin-bottom:1rem;
+      font-family:"Inter",sans-serif;font-weight:900;
+      font-size:clamp(1.9rem,3.5vw,2.8rem);color:var(--white);
+      margin-bottom:1rem;letter-spacing:-.02em;
     }
     .cta-final p{font-size:.95rem;color:var(--muted);max-width:440px;margin:0 auto 2.5rem}
     .cta-form{display:flex;max-width:420px;margin:0 auto;gap:0}
     .cta-inp{
-      flex:1;padding:.85rem 1.2rem;
-      background:var(--white);border:1px solid var(--border);
+      flex:1;padding:.9rem 1.2rem;
+      background:var(--dark3);border:1px solid var(--border);
       border-right:none;border-radius:8px 0 0 8px;
-      font-size:.9rem;color:var(--text);outline:none;font-family:inherit;
+      font-size:.9rem;color:var(--white);outline:none;font-family:inherit;
     }
-    .cta-inp:focus{border-color:var(--amber)}
+    .cta-inp:focus{border-color:var(--blue)}
     .cta-inp::placeholder{color:var(--muted)}
     .cta-btn{
-      padding:.85rem 1.5rem;background:var(--brown);color:var(--cream);
-      font-size:.88rem;font-weight:600;border:none;cursor:pointer;
-      border-radius:0 8px 8px 0;font-family:inherit;transition:background .2s;
+      padding:.9rem 1.5rem;background:var(--blue);color:var(--white);
+      font-size:.88rem;font-weight:700;border:none;cursor:pointer;
+      border-radius:0 8px 8px 0;font-family:inherit;transition:all .2s;
     }
-    .cta-btn:hover{background:var(--brown2)}
+    .cta-btn:hover{background:var(--blue2)}
 
     /* FOOTER */
     footer{
-      background:var(--brown);
+      background:var(--dark);border-top:1px solid var(--border);
       padding:2rem 2.5rem;
       display:flex;justify-content:space-between;align-items:center;
     }
-    footer img{height:38px;width:auto;opacity:.75;transition:opacity .2s}
+    footer img{height:36px;width:auto;opacity:.6;transition:opacity .2s}
     footer img:hover{opacity:1}
-    .footer-copy{font-size:.73rem;color:rgba(250,247,242,0.4)}
+    .footer-copy{font-size:.72rem;color:rgba(255,255,255,0.25)}
     .footer-links{display:flex;gap:1.5rem;list-style:none}
-    .footer-links a{font-size:.73rem;color:rgba(250,247,242,0.45);text-decoration:none;transition:color .2s}
-    .footer-links a:hover{color:rgba(250,247,242,0.85)}
+    .footer-links a{font-size:.72rem;color:rgba(255,255,255,0.3);text-decoration:none;transition:color .2s}
+    .footer-links a:hover{color:rgba(255,255,255,0.7)}
 
     /* REVEAL */
     .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
     .reveal.visible{opacity:1;transform:none}
     .reveal-d1{transition-delay:.1s}.reveal-d2{transition-delay:.2s}
-    .reveal-d3{transition-delay:.3s}.reveal-d4{transition-delay:.4s}
+    .reveal-d3{transition-delay:.3s}
 
     /* RESPONSIVE */
     @media(max-width:800px){
-      nav{padding:0 1.2rem;height:90px;grid-template-columns:1fr auto 1fr}
-      nav img{height:120px}
-      .hero{padding:6rem 1.5rem 3.5rem;gap:1.4rem}
+      nav{padding:0 1.2rem;height:76px}
+      nav img{height:90px}
+      .hero{padding:7rem 1.5rem 3.5rem;gap:1.6rem}
       .how{padding:4rem 1.5rem}
       .how-cols{grid-template-columns:1fr;gap:3rem}
       .features{padding:4rem 1.5rem}
@@ -254,7 +290,6 @@
       .cta-inp{border-right:1px solid var(--border);border-bottom:none;border-radius:8px 8px 0 0}
       .cta-btn{border-radius:0 0 8px 8px}
       footer{flex-direction:column;gap:1rem;padding:2rem 1.5rem;text-align:center}
-      .strip{padding:2rem 1.5rem}
     }
   </style>
 </head>
@@ -264,12 +299,12 @@
 <nav>
   <span></span>
   <img src="./logo.jpg" alt="WaiterAI"/>
-  <span></span>
+  <a href="#contacto" class="btn-nav">Solicitar demo</a>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <span class="eyebrow">Carta digital para restaurantes</span>
+  <span class="eyebrow">🚀 Carta digital para restaurantes</span>
   <h1>La carta que<br><em>gestiona</em><br>los pedidos sola</h1>
   <p class="hero-sub">Tus clientes escanean el QR, navegan por la carta y piden desde su móvil. Tus camareros se liberan. Tu restaurante rota más mesas y factura más.</p>
   <div class="hero-badges">
@@ -277,20 +312,16 @@
     <span class="badge">⚡ Alta en menos de 24h</span>
     <span class="badge">🔄 Comandas en tiempo real</span>
   </div>
-  <div style="display:flex;flex-direction:column;gap:0;max-width:520px;margin:0 auto;width:100%;text-align:center">
-    <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,4.5vw,2rem);font-weight:700;color:var(--brown);line-height:1.2;padding:1.1rem 0">📈 Mayor rotación de mesas, <span style="color:var(--amber);font-style:italic">mayores beneficios</span></p>
-    <div style="height:1px;background:var(--border)"></div>
-    <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,4.5vw,2rem);font-weight:700;color:var(--brown);line-height:1.2;padding:1.1rem 0">👨‍🍳 Menos camareros, <span style="color:var(--amber);font-style:italic">más mesas atendidas</span></p>
-    <div style="height:1px;background:var(--border)"></div>
-    <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,4.5vw,2rem);font-weight:700;color:var(--brown);line-height:1.2;padding:1.1rem 0">✅ Cero errores, <span style="color:var(--amber);font-style:italic">cero papel</span></p>
+  <div class="frases reveal">
+    <div class="frase">📈 Mayor rotación de mesas, <em>mayores beneficios</em></div>
+    <div class="frase">👨‍🍳 Menos camareros, <em>más mesas atendidas</em></div>
+    <div class="frase">✅ Cero errores, <em>cero papel</em></div>
+  </div>
+  <div class="qr-wrap reveal reveal-d1">
+    <span class="qr-label">Pruébalo ahora · Escanea el QR</span>
+    <img src="./qr-demo.png" alt="QR demo WaiterAI"/>
   </div>
 </section>
-
-<!-- HERO QR -->
-<div style="text-align:center;padding:0 2rem 3rem;margin-top:-1rem">
-  <p style="font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1.2rem">Pruébalo ahora · Escanea el QR</p>
-  <img src="./qr-demo.png" alt="QR demo WaiterAI" style="width:220px;height:auto;border-radius:16px;box-shadow:0 12px 40px rgba(44,26,14,0.12)"/>
-</div>
 
 <!-- STRIP -->
 <div class="strip">
@@ -310,74 +341,22 @@
           <div class="how-col-icon">🙋</div>
           El cliente · Autogestiona su mesa
         </div>
-        <div class="step">
-          <div class="step-num">1</div>
-          <div class="step-body">
-            <div class="step-h">Escanea el QR en la mesa</div>
-            <div class="step-p">Sin app, sin descarga. Abre la carta en el navegador de su móvil en segundos.</div>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">2</div>
-          <div class="step-body">
-            <div class="step-h">Explora la carta digital</div>
-            <div class="step-p">Navega por categorías, consulta fotos y precios, añade platos a su comanda.</div>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">3</div>
-          <div class="step-body">
-            <div class="step-h">Pide cuando quiere</div>
-            <div class="step-p">Añade y modifica platos a su ritmo. Sin interrumpir la conversación, sin señales al camarero.</div>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">4</div>
-          <div class="step-body">
-            <div class="step-h">Solicita la cuenta</div>
-            <div class="step-p">Pide la cuenta desde el móvil. El camarero la trae y cobra — como siempre.</div>
-          </div>
-        </div>
-        <div class="how-img">
-          <img src="./how-cliente.jpg" alt="Cliente usando la carta digital"/>
-        </div>
+        <div class="step"><div class="step-num">1</div><div><div class="step-h">Escanea el QR en la mesa</div><div class="step-p">Sin app, sin descarga. Abre la carta en el navegador de su móvil en segundos.</div></div></div>
+        <div class="step"><div class="step-num">2</div><div><div class="step-h">Explora la carta digital</div><div class="step-p">Navega por categorías, consulta fotos y precios, añade platos a su comanda.</div></div></div>
+        <div class="step"><div class="step-num">3</div><div><div class="step-h">Pide cuando quiere</div><div class="step-p">Añade y modifica platos a su ritmo. Sin interrumpir la conversación.</div></div></div>
+        <div class="step"><div class="step-num">4</div><div><div class="step-h">Solicita la cuenta</div><div class="step-p">Pide la cuenta desde el móvil. El camarero la trae y cobra — como siempre.</div></div></div>
+        <div class="how-img"><img src="./how-cliente.jpg" alt="Cliente usando la carta digital"/></div>
       </div>
       <div class="how-col reveal reveal-d2">
         <div class="how-col-title">
           <div class="how-col-icon">🏪</div>
           El restaurante · Control total
         </div>
-        <div class="step">
-          <div class="step-num">1</div>
-          <div class="step-body">
-            <div class="step-h">Alta en menos de 24 horas</div>
-            <div class="step-p">Subimos tu carta, configuramos las mesas y colocamos los QR. Sin complicaciones técnicas.</div>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">2</div>
-          <div class="step-body">
-            <div class="step-h">Comandas en tiempo real</div>
-            <div class="step-p">Cada pedido llega al instante al panel de cocina. Sin papel, sin errores, sin retrasos.</div>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">3</div>
-          <div class="step-body">
-            <div class="step-h">Gestiona la carta desde el panel</div>
-            <div class="step-p">Cambia precios, añade platos o marca artículos agotados. Actualización instantánea para todos.</div>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">4</div>
-          <div class="step-body">
-            <div class="step-h">Camareros centrados en servir</div>
-            <div class="step-p">Menos viajes para tomar nota, más tiempo para atender bien. El mismo equipo rinde más.</div>
-          </div>
-        </div>
-        <div class="how-img">
-          <img src="./how-restaurante.jpg" alt="Panel de caja y cocina"/>
-        </div>
+        <div class="step"><div class="step-num">1</div><div><div class="step-h">Alta en menos de 24 horas</div><div class="step-p">Subimos tu carta, configuramos las mesas y colocamos los QR. Sin complicaciones técnicas.</div></div></div>
+        <div class="step"><div class="step-num">2</div><div><div class="step-h">Comandas en tiempo real</div><div class="step-p">Cada pedido llega al instante al panel de cocina. Sin papel, sin errores, sin retrasos.</div></div></div>
+        <div class="step"><div class="step-num">3</div><div><div class="step-h">Gestiona la carta desde el panel</div><div class="step-p">Cambia precios, añade platos o marca artículos agotados. Actualización instantánea.</div></div></div>
+        <div class="step"><div class="step-num">4</div><div><div class="step-h">Camareros centrados en servir</div><div class="step-p">Menos viajes para tomar nota, más tiempo para atender bien. El mismo equipo rinde más.</div></div></div>
+        <div class="how-img"><img src="./how-restaurante.jpg" alt="Panel de caja y cocina"/></div>
       </div>
     </div>
   </div>
@@ -388,39 +367,15 @@
   <div class="features-inner">
     <div class="section-header reveal">
       <h2>Todo lo que incluye</h2>
-      <p style="color:rgba(250,247,242,0.6)">Sin módulos extra, sin costes ocultos.</p>
+      <p>Sin módulos extra, sin costes ocultos.</p>
     </div>
     <div class="feat-grid">
-      <div class="feat-cell reveal reveal-d1">
-        <div class="fc-icon">📲</div>
-        <div class="fc-title">Carta digital QR</div>
-        <div class="fc-text">El cliente abre la carta escaneando el QR de su mesa. Sin app, sin cuenta, sin fricción.</div>
-      </div>
-      <div class="feat-cell reveal reveal-d2">
-        <div class="fc-icon">⚡</div>
-        <div class="fc-title">Comandas en tiempo real</div>
-        <div class="fc-text">Cada pedido llega al instante al panel de cocina. Sin papel, sin errores de transcripción.</div>
-      </div>
-      <div class="feat-cell reveal reveal-d3">
-        <div class="fc-icon">🖼️</div>
-        <div class="fc-title">Fotos de los platos</div>
-        <div class="fc-text">Sube imágenes de tus platos. Los clientes ven lo que van a pedir antes de decidir.</div>
-      </div>
-      <div class="feat-cell reveal reveal-d1">
-        <div class="fc-icon">🗓️</div>
-        <div class="fc-title">Menú del día</div>
-        <div class="fc-text">Configura el menú del día por días de la semana. Se activa y desactiva automáticamente.</div>
-      </div>
-      <div class="feat-cell reveal reveal-d2">
-        <div class="fc-icon">🍷</div>
-        <div class="fc-title">Vinos y bebidas</div>
-        <div class="fc-text">Organiza tu carta de bebidas por categorías. Los clientes las ven y piden desde la mesa.</div>
-      </div>
-      <div class="feat-cell reveal reveal-d3">
-        <div class="fc-icon">⚙️</div>
-        <div class="fc-title">Panel de administración</div>
-        <div class="fc-text">Gestiona platos, precios y categorías desde cualquier dispositivo. Los cambios son inmediatos.</div>
-      </div>
+      <div class="feat-cell reveal reveal-d1"><div class="fc-icon">📲</div><div class="fc-title">Carta digital QR</div><div class="fc-text">El cliente abre la carta escaneando el QR de su mesa. Sin app, sin cuenta, sin fricción.</div></div>
+      <div class="feat-cell reveal reveal-d2"><div class="fc-icon">⚡</div><div class="fc-title">Comandas en tiempo real</div><div class="fc-text">Cada pedido llega al instante al panel de cocina. Sin papel, sin errores de transcripción.</div></div>
+      <div class="feat-cell reveal reveal-d3"><div class="fc-icon">🖼️</div><div class="fc-title">Fotos de los platos</div><div class="fc-text">Sube imágenes de tus platos. Los clientes ven lo que van a pedir antes de decidir.</div></div>
+      <div class="feat-cell reveal reveal-d1"><div class="fc-icon">🗓️</div><div class="fc-title">Menú del día</div><div class="fc-text">Configura el menú del día por días de la semana. Se activa y desactiva automáticamente.</div></div>
+      <div class="feat-cell reveal reveal-d2"><div class="fc-icon">🍷</div><div class="fc-title">Vinos y bebidas</div><div class="fc-text">Organiza tu carta de bebidas por categorías. Los clientes las ven y piden desde la mesa.</div></div>
+      <div class="feat-cell reveal reveal-d3"><div class="fc-icon">⚙️</div><div class="fc-title">Panel de administración</div><div class="fc-text">Gestiona platos, precios y categorías desde cualquier dispositivo. Los cambios son inmediatos.</div></div>
     </div>
   </div>
 </section>
@@ -432,10 +387,9 @@
     <p>Un precio fijo mensual. Todo incluido desde el primer día.</p>
   </div>
   <div class="price-card reveal reveal-d1">
-    <div style="display:inline-block;background:var(--amber);color:var(--white);font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .9rem;border-radius:100px;margin-bottom:1rem">🎉 Oferta de lanzamiento</div>
-    <div class="price-amount" style="position:relative;display:inline-block">
-      <span style="font-size:2rem;color:var(--muted);text-decoration:line-through;opacity:0.5;margin-right:.5rem">250€</span>200€<span>/mes</span>
-    </div>
+    <div class="launch-badge">🎉 Oferta de lanzamiento</div>
+    <div style="margin-bottom:.3rem"><span class="price-old">250€</span></div>
+    <div class="price-amount">200€<span>/mes</span></div>
     <p class="price-desc">Sin permanencia. Sin comisiones por pedido. Sin costes de instalación.</p>
     <ul class="price-includes">
       <li>Carta digital con QR para todas tus mesas</li>
@@ -444,7 +398,7 @@
       <li>Alta y configuración incluida</li>
       <li>Soporte directo con el equipo</li>
     </ul>
-    <a href="#contacto" class="btn-main" style="width:100%;text-align:center;display:block">Solicitar demo gratuita</a>
+    <a href="#contacto" class="btn-main">Solicitar demo gratuita</a>
     <p class="price-note">Te contactamos en menos de 24 horas</p>
   </div>
 </section>
@@ -481,8 +435,8 @@
     const email = e.target.querySelector('input').value;
     emailjs.init('bf-evVHanLbNX-Du6');
     emailjs.send('service_t59m5f7','template_l55iz68',{email_from:email,message:'Nueva solicitud de demo desde la landing de WaiterAI.'})
-      .then(()=>{e.target.innerHTML='<p style="color:var(--amber);font-weight:600">✓ Recibido. Te contactamos pronto.</p>'})
-      .catch(()=>{e.target.innerHTML='<p style="color:var(--amber)">Envíanos un email a waiter.ai.future@gmail.com</p>'});
+      .then(()=>{e.target.innerHTML='<p style="color:#4B8AFF;font-weight:600">✓ Recibido. Te contactamos pronto.</p>'})
+      .catch(()=>{e.target.innerHTML='<p style="color:#4B8AFF">Envíanos un email a waiter.ai.future@gmail.com</p>'});
   }
 </script>
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
